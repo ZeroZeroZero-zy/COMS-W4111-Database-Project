@@ -1,0 +1,104 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+</style>
+  <div class="topnav">
+  <a href="home">Home</a>
+  <a href="players">Players</a>
+  <a href="teams">Teams</a>
+    <a href="tournaments">Tournaments</a>
+    <a href="sponsors">Sponsors</a>
+  <a href="organizers">Organizers</a>
+  <div class="search-container">
+  </div>
+</div>
+
+<hr/>
+<p>Tell us about the tournament/tournaments you are looking for</p>
+
+
+<form method="POST" action="/tour_search_tour">
+  <p>Tournament name: <input type="text" placeholder="The International 2018" name="tour_name"></p>
+  <p>OR</p>
+  <p>Dates: <input type="text" placeholder="Aug,2018" name="input_time"></p>
+  <p>City: <input type="text" placeholder="Vancouver, Canada" name="input_location"></p>
+  <p>Prizepool: between <input type="text" placeholder="1000000" name="prizepool_f"> and <input type="text" placeholder="10000000" name="prizepool_t"> </p>
+  <p><input type="submit" value="search"></p>
+</form>
+
+<table border="1">
+  <tr>
+    <th>tournament_name</th>
+    <th>dates</th>
+    <th>city</th>
+    <th>prizepool</th>
+  </tr>
+  {% for n in tour %}
+  <tr>
+  <td>{{n.tournament_name}}</td>
+  <td>{{n.dates}}</td>
+  <td>{{n.city}}</td>
+  <td>{{n.prizepool}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<hr/>
+<form method="POST" action="/tour_search_org">
+<p>Search for all the organizers/sponsors that this team has</p>
+  <p>Tournament name: <input type="text" placeholder="The International 2018" name="tour_name"></p>
+  <p><input type="submit" value="search for organizers"></p>
+</form>
+
+<table border="1">
+  <tr>
+  <th>organizer_name</th>
+    <th>tournament_name</th>
+    <th>dates</th>
+    <th>city</th>
+    <th>prizepool</th>
+  </tr>
+  {% for n in tour_org %}
+  <tr>
+  <td>{{n.organizer_name}}</td>
+  <td>{{n.tournament_name}}</td>
+  <td>{{n.dates}}</td>
+  <td>{{n.city}}</td>
+  <td>{{n.prizepool}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<hr/>
+<form method="POST" action="/tour_search_spon">
+<p>Search for all the organizers/sponsors that this team has</p>
+  <p>Tournament name: <input type="text" placeholder="The International 2018" name="tour_name"></p>
+   <p><input type="submit" value="search for sponsors"></p>
+</form>
+
+<table border="1">
+  <tr>
+  <th>sponsor_name</th>
+    <th>tournament_name</th>
+    <th>dates</th>
+    <th>city</th>
+    <th>prizepool</th>
+  </tr>
+  {% for n in tour_spon %}
+  <tr>
+  <td>{{n.sponsor_name}}</td>
+  <td>{{n.tournament_name}}</td>
+  <td>{{n.dates}}</td>
+  <td>{{n.city}}</td>
+  <td>{{n.prizepool}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+
+
+</html>

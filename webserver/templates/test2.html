@@ -1,0 +1,47 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>DOTA2 Esports Database Application</h1>
+  
+  
+  
+  
+    var data = [[1,2,3],[2,3,4],[0,0,0]];
+    var k = 0;
+    var str= '';
+    str += "<table border='1' bordercolor='#000'>";
+    for(var i=0; i<len(data); i++) {
+        str += '<tr>';
+        for(var j=0; j<len(data[0]); j++) {
+            var tds = '<td>' + data[k] + '</td>';
+            k++;
+            str += tds;
+        }
+        str += '</tr>';
+    }
+    str += '</table>';
+    
+  
+  <table border="1">
+  <tr>
+    <th>月份</th>
+    <th>存款</th>
+  </tr>
+  <tr>
+    <td>一月</td>
+    <td>1000 元</td>
+  </tr>
+  </table>
+
+
+</body>
+
+
+</html>

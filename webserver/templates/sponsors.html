@@ -1,0 +1,93 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+</style>
+  <div class="topnav">
+  <a href="home">Home</a>
+  <a href="players">Players</a>
+  <a href="teams">Teams</a>
+  <a href="tournaments">Tournaments</a>
+  <a href="sponsors">Sponsors</a>
+  <a href="organizers">Organizers</a>
+  <div class="search-container">
+  </div>
+</div>
+
+<hr/>
+<p>Search for all the teams sponsored by this sponsor</p>
+<form method="POST" action="/spon_search_ts">
+  <p>sponsor name: <input type="text" placeholder="Twitch" name="s_name"></p>
+  <p><input type="submit" value="search for teams"></p>
+</form>
+
+<table border="1">
+  <tr>
+  <th>sponsor_name</th>
+    <th>team_id</th>
+    <th>team_name</th>
+    <th>region</th>
+    <th>status</th>
+    <th>founded_time</th>
+    <th>earnings</th>
+  </tr>
+  {% for n in ts_spon %}
+  <tr>
+  <td>{{n.sponsor}}</td>
+  <td>{{n.team_id}}</td>
+  <td>{{n.team_name}}</td>
+  <td>{{n.region}}</td>
+  <td>{{n.status}}</td>
+  <td>{{n.founded_time}}</td>
+  <td>{{n.earnings}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<hr/>
+<p>Search for all the tournaments sponsored by this sponsor</p>
+<form method="POST" action="/spon_search_tour">
+  <p>sponsor name: <input type="text" placeholder="Twitch" name="s_name"></p>
+   <p><input type="submit" value="search for tournaments"></p>
+</form>
+
+<table border="1">
+  <tr>
+    <th>sponsor_name</th>
+    <th>tournament_name</th>
+    <th>dates</th>
+    <th>city</th>
+    <th>prizepool</th>
+  </tr>
+  {% for n in tour_spon %}
+  <tr>
+  <td>{{n.sponsor_name}}</td>
+  <td>{{n.tournament_name}}</td>
+  <td>{{n.dates}}</td>
+  <td>{{n.city}}</td>
+  <td>{{n.prizepool}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<hr/>
+<p>Sponsor list</p>
+
+ <table border="1">
+  <tr>
+    <th>Sponsor name</th>
+  </tr>
+  {% for n in sponsors %}
+  <tr>
+  <td>{{n.sponsor_name}}</td>
+  </tr>
+  {% endfor %}
+  </table>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,168 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+</style>
+  <div class="topnav">
+  <a href="home">Home</a>
+  <a href="players">Players</a>
+  <a href="teams">Teams</a>
+    <a href="tournaments">Tournaments</a>
+    <a href="sponsors">Sponsors</a>
+<a href="organizers">Organizers</a>
+  <div class="search-container">
+  </div>
+</div>
+
+<hr/>
+<p>Tell us about the team/teams you are looking for</p>
+
+<form method="POST" action="/teams_search_team">
+  <p>Team name: <input type="text" placeholder="Team Liquid" name="t_name"></p>
+    <p>OR</p>
+  <p>Region: <input type="text" placeholder="NA" name="region"></p>
+  <p>Status: <input type="text" placeholder="Active/Inactive" name="status"> </p>
+  <p>Founded time: between <input type="text" placeholder="2010" name="founded_time_f"> and <input type="text" placeholder="2018" name="founded_time_t"></p>
+  <p>Earnings: between $<input type="text" placeholder="10000000"  name="earnings_f">  and $<input type="text" placeholder="20000000" name="earnings_t"> </p>
+
+<p><input type="submit" value="search for team info"></p>
+</form>
+
+<table border="1">
+  <tr>
+    <th>team_id</th>
+    <th>team_name</th>
+    <th>region</th>
+    <th>status</th>
+    <th>founded_time</th>
+    <th>earnings</th>
+  </tr>
+  {% for n in teams %}
+  <tr>
+  <td>{{n.team_id}}</td>
+  <td>{{n.team_name}}</td>
+  <td>{{n.region}}</td>
+  <td>{{n.status}}</td>
+  <td>{{n.founded_time}}</td>
+  <td>{{n.earnings}}</td>
+  </tr>
+  {% endfor %}
+</table>
+  
+  <hr/>
+  <p>Search for all the players that have played for this team</p>
+  <form method="POST" action="/teams_search_emps_ps">
+  <p>Team name: <input type="text" placeholder="Team Liquid" name="t_name"></p>
+ <p> During time <input type="text" placeholder="2010-03-21" name="wf_f"> <input type="text" placeholder="2018-10-08" name="wf_t"></p>
+  <p><input type="submit" value="search for players"></p>
+  </form>
+  
+  <table border="1">
+  <tr>
+    <th>team_name</th>
+    <th>player_nameid</th>
+    <th>id</th>
+    <th>name</th>
+    <th>country</th>
+    <th>position</th>
+    <th>since</th>
+    <th>end</th>
+  </tr>
+  {% for n in emp_ps %}
+  <tr>
+  <td>{{n.team_name}}</td>
+  <td>{{n.emp_nameid}}</td>
+  <td>{{n.id}}</td>
+  <td>{{n.name}}</td>
+  <td>{{n.country}}</td>
+  <td>{{n.position}}</td>
+  <td>{{n.since}}</td>
+  <td>{{n.end}}</td>
+  </tr>
+  {% endfor %}
+</table>
+  
+  <hr/>
+  <p>Search for all the workers that have worked for this team</p>
+  <form method="POST" action="/teams_search_emps_ws">
+   <p>Team name: <input type="text" placeholder="Team Liquid" name="t_name"></p>
+ <p> During time <input type="text" placeholder="2010-03-21" name="wf_f"> <input type="text" placeholder="2018-10-08" name="wf_t"></p>
+  <p><input type="submit" value="search for workers"></p>
+  </form>
+  
+    <table border="1">
+  <tr>
+    <th>team_name</th>
+    <th>worker_nameid</th>
+    <th>name</th>
+    <th>country</th>
+    <th>position</th>
+    <th>since</th>
+    <th>end</th>
+  </tr>
+  {% for n in emp_ws %}
+  <tr>
+  <td>{{n.team_name}}</td>
+  <td>{{n.emp_nameid}}</td>
+  <td>{{n.name}}</td>
+  <td>{{n.country}}</td>
+  <td>{{n.position}}</td>
+  <td>{{n.since}}</td>
+  <td>{{n.end}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+  <hr/>
+  <p>Search for all the tournaments that this team has participated in/has</p>
+  <form method="POST" action="/teams_search_tour">
+  <p>Team name: <input type="text" placeholder="Team Liquid" name="t_name"></p>
+  <p><input type="submit" value="search for tournaments"></p>
+  </form>
+  
+  <table border="1">
+  <tr>
+    <th>team_name</th>
+    <th>tournament_name</th>
+    <th>dates</th>
+    <th>city</th>
+    <th>result</th>
+  </tr>
+  {% for n in tours %}
+  <tr>
+  <td>{{n.team_name}}</td>
+  <td>{{n.tournament_name}}</td>
+  <td>{{n.dates}}</td>
+  <td>{{n.city}}</td>
+  <td>{{n.result}}</td>
+  </tr>
+  {% endfor %}
+</table>
+  
+  <hr/>
+  <p>Search for all the sponsors that this team has participated in/has</p>
+  <form method="POST" action="/teams_search_spon">
+  <p>Team name: <input type="text" placeholder="Team Liquid" name="t_name"></p>
+  <p><input type="submit" value="search for sponsors"></p>
+  </form>
+  
+    <table border="1">
+  <tr>
+    <th>team_name</th>
+    <th>sponsor_name</th>
+  </tr>
+  {% for n in spons %}
+  <tr>
+  <td>{{n.team_name}}</td>
+  <td>{{n.sponsor}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+</body>
+
+
+</html>

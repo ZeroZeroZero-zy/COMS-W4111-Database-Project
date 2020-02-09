@@ -1,0 +1,31 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+</script>
+<script>
+$(function() {
+    var data = [[1,2,3],[2,3,4],[0,0,0]];
+var k = 0;
+var str= '';
+str += "<table border='1' bordercolor='#000'>";
+var n1 = len(data);
+var n2 = len(data[0]);
+for(var i=0; i<n1; i++) {
+    str += '<tr>';
+    for(var j=0; j<n2; j++) {
+        var tds = '<td>' + data[i][j] + '</td>';
+        k++;
+        str += tds;
+    }
+    str += '</tr>';
+}
+str += '</table>';
+$('#divId').html(str);
+});
+</script>
+</head>
+<body>
+<div id='divId'></div>
+<div> n1 </div>
+</body>
+</html>

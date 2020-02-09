@@ -1,0 +1,62 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+</style>
+  <div class="topnav">
+  <a href="home">Home</a>
+  <a href="players">Players</a>
+  <a href="teams">Teams</a>
+  <a href="tournaments">Tournaments</a>
+  <a href="sponsors">Sponsors</a>
+  <a href="organizers">Organizers</a>
+  <div class="search-container">
+  </div>
+</div>
+
+<hr/>
+<form method="POST" action="/search_tour_for_org">
+<p>Search for all the tournaments that this organizer organized</p>
+  <p>organizer name: <input type="text" placeholder="Valve" name="org_name"></p>
+   <p><input type="submit" value="search for tournaments"></p>
+</form>
+<table border="1">
+  <tr>
+    <th>organizer_name</th>
+    <th>tournament_name</th>
+    <th>dates</th>
+    <th>city</th>
+    <th>prizepool</th>
+  </tr>
+  {% for n in t_f_o %}
+  <tr>
+  <td>{{n.organizer_name}}</td>
+  <td>{{n.tournament_name}}</td>
+  <td>{{n.dates}}</td>
+  <td>{{n.city}}</td>
+  <td>{{n.prizepool}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<hr/>
+<p>Organizer list</p>
+
+ <table border="1">
+  <tr>
+    <th>Organizer name</th>
+  </tr>
+  {% for n in organizers %}
+  <tr>
+  <td>{{n.organizer_name}}</td>
+  </tr>
+  {% endfor %}
+  </table>
+
+
+</body>
+
+
+</html>

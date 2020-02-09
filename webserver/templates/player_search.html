@@ -1,0 +1,36 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>DOTA2 Esports Database Application</h1>
+
+<form method="POST" action="/search">
+<p>ID of a professional player: <input type="text" name="name"> <input type="submit" value="Search"></p>
+</form>
+<table border="1">
+  <tr>
+    <th>nameid</th>
+    <th>id</th>
+    <th>name</th>
+    <th>country</th>
+  </tr>
+  {% for n in players1 %}
+  <tr>
+  <td>{{n.player_nameid}}</td>
+  <td>{{n.id}}</td>
+  <td>{{n.name}}</td>
+  <td>{{n.country}}</td>
+  </tr>
+  {% endfor %}
+  </table>
+
+</body>
+
+
+</html>

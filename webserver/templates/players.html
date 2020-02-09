@@ -1,0 +1,156 @@
+<html>
+  <style>
+    body{ 
+      font-size: 15pt;
+      font-family: arial;
+    }
+</style>
+  <div class="topnav">
+  <a href="home">Home</a>
+  <a href="players">Players</a>
+  <a href="teams">Teams</a>
+  <a href="tournaments">Tournaments</a>
+  <a href="sponsors">Sponsors</a>
+  <a href="organizers">Organizers</a>
+  <div class="search-container">
+  </div>
+</div>
+
+<hr/>
+<p>Tell us about the player/players you are looking for</p>
+
+<form method="POST" action="/search_p">
+  <p>Player id: <input type="text" placeholder="Ana" name="id"></p>
+    <p>OR</p>
+  <p>Player name: <input type="text" placeholder="Anathan Pham" name="name"></p>
+  <p>Country: <input type="text" placeholder="Australia" name="country"></p>
+  <p>Role: <input type="text" placeholder="Support" name="role"> </p>
+  <p>Status: <input type="text" placeholder="Active/Inactive" name="status"></p>
+  <p>Age: <input name="age_from" placeholder="..years old" type="text">  <input type="text" placeholder="to" name="age_to">  </p>
+  <p>Years_pro: between <input type="text" placeholder="1" name="years_pro_from"> and <input type="text" placeholder="3" name="years_pro_to"> years</p>
+  <p>Earnings: between $<input type="text" placeholder="1000000"  name="earnings_from">  and $<input type="text" placeholder="5000000" name="earnings_to"> </p>
+  <p>Number of followers: <input type="text" placeholder="from" name="followers_from">  <input type="text" placeholder="to" name="followers_to"> </p>
+
+<p><input type="submit" value="search for player info"></p>
+</form>
+<table border="1">
+  <tr>
+    <th>nameid</th>
+    <th>id</th>
+    <th>name</th>
+    <th>country</th>
+    <th>role</th>
+    <th>status</th>
+    <th>birthday</th>
+    <th>years_pro</th>
+    <th>earnings</th>
+    <th>followers</th>
+  </tr>
+  {% for n in players1 %}
+  <tr>
+  <td>{{n.player_nameid}}</td>
+  <td>{{n.id}}</td>
+  <td>{{n.name}}</td>
+  <td>{{n.country}}</td>
+  <td>{{n.role}}</td>
+  <td>{{n.status}}</td>
+  <td>{{n.birthday}}</td>
+  <td>{{n.years_pro}}</td>
+  <td>{{n.earnings}}</td>
+  <td>{{n.followers}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<p>Transfers</p>
+<table border="1">
+  <tr>
+    <th>nameid</th>
+    <th>team_id</th>
+    <th>position</th>
+    <th>since</th>
+    <th>end</th>
+  </tr>
+  {% for n in trans %}
+  <tr>
+  <td>{{n.emp_nameid}}</td>
+  <td>{{n.team_id}}</td>
+  <td>{{n.position}}</td>
+  <td>{{n.since}}</td>
+  <td>{{n.end}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<hr/>
+<form method="POST" action="/search_teams_for_player">
+  <p>Search for the teams that this player has/had played in</p>
+  <p>Player id:<input type="text" placeholder="Ana" name="id"></p>
+  <p><input type="submit" value="search for teams"></p>
+</form>
+<table border="1">
+  <tr>
+    <th>nameid</th>
+    <th>id</th>
+    <th>team_id</th>
+    <th>team_name</th>
+    <th>region</th>
+    <th>status</th>
+    <th>founded_time</th>
+    <th>earnings</th>
+    <th>position</th>
+    <th>from</th>
+    <th>to</th>
+  </tr>
+  {% for n in t_f_p %}
+  <tr>
+  <td>{{n.player_nameid}}</td>
+  <td>{{n.id}}</td>
+  <td>{{n.team_id}}</td>
+  <td>{{n.team_name}}</td>
+  <td>{{n.region}}</td>
+  <td>{{n.status}}</td>
+  <td>{{n.founded_time}}</td>
+  <td>{{n.earnings}}</td>
+  <td>{{n.position}}</td>
+  <td>{{n.since}}</td>
+  <td>{{n.end}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<hr/>
+<form method="POST" action="/search_tournaments_for_player">
+  <p>Search for the tournaments that this player had participated in</p>
+  <p>Player id:<input type="text" placeholder="Ana" name="id"></p>
+   <p><input type="submit" value="search for tournaments"></p>
+</form>
+<table border="1">
+  <tr>
+    <th>nameid</th>
+    <th>id</th>
+    <th>team_name</th>
+    <th>tournament_name</th>
+    <th>dates</th>
+    <th>city</th>
+    <th>prizepool</th>
+    <th>result</th>
+  </tr>
+  {% for n in tour_f_p %}
+  <tr>
+  <td>{{n.player_nameid}}</td>
+  <td>{{n.id}}</td>
+  <td>{{n.team_name}}</td>
+  <td>{{n.tournament_name}}</td>
+  <td>{{n.dates}}</td>
+  <td>{{n.city}}</td>
+  <td>{{n.prizepool}}</td>
+  <td>{{n.result}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+
+
+</html>
